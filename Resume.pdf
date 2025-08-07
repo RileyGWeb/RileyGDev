@@ -1,0 +1,145 @@
+%PDF-1.4
+1 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+
+2 0 obj
+<<
+/Type /Pages
+/Kids [3 0 R]
+/Count 1
+>>
+endobj
+
+3 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 612 792]
+/Resources <<
+  /Font <<
+    /F1 4 0 R
+  >>
+>>
+/Contents 5 0 R
+>>
+endobj
+
+4 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+>>
+endobj
+
+5 0 obj
+<<
+/Length 1200
+>>
+stream
+BT
+/F1 24 Tf
+50 750 Td
+(RILEY GOODMAN) Tj
+0 -30 Td
+/F1 12 Tf
+(Software Engineer) Tj
+0 -40 Td
+(Email: hello@rileyg.dev) Tj
+0 -15 Td
+(Phone: (720) 291-0714) Tj
+0 -15 Td
+(Location: Anthem, AZ) Tj
+0 -15 Td
+(LinkedIn: linkedin.com/in/rileygweb) Tj
+0 -15 Td
+(GitHub: github.com/rileygweb) Tj
+0 -40 Td
+/F1 16 Tf
+(PROFESSIONAL SUMMARY) Tj
+0 -25 Td
+/F1 10 Tf
+(Experienced Software Engineer with 8+ years of programming) Tj
+0 -12 Td
+(experience and 6+ years specializing in PHP/Laravel development.) Tj
+0 -12 Td
+(Proven track record of building scalable web applications,) Tj
+0 -12 Td
+(optimizing database performance, and delivering high-quality) Tj
+0 -12 Td
+(software solutions. Recently laid off and actively seeking) Tj
+0 -12 Td
+(new opportunities.) Tj
+0 -30 Td
+/F1 16 Tf
+(TECHNICAL SKILLS) Tj
+0 -25 Td
+/F1 10 Tf
+(Languages: PHP, JavaScript, SQL, Python) Tj
+0 -12 Td
+(Frameworks: Laravel, React, Next.js, Livewire, Alpine.js) Tj
+0 -12 Td
+(Databases: MySQL, PostgreSQL, MongoDB) Tj
+0 -12 Td
+(Tools: AWS, Forge, Git, Docker, Figma) Tj
+0 -12 Td
+(Design: Adobe Creative Cloud, UI/UX Design) Tj
+0 -30 Td
+/F1 16 Tf
+(PROFESSIONAL EXPERIENCE) Tj
+0 -25 Td
+/F1 12 Tf
+(Senior Software Engineer) Tj
+0 -15 Td
+/F1 10 Tf
+(Liftable Media, Inc. \(Firefly Engagement\) | 2022 - 2024) Tj
+0 -12 Td
+(• Built comprehensive Analytics Dashboard) Tj
+0 -12 Td
+(• Developed Custom Reporting system) Tj
+0 -12 Td
+(• Collaborated with data analysts) Tj
+0 -20 Td
+/F1 12 Tf
+(Software Developer) Tj
+0 -15 Td
+/F1 10 Tf
+(iClassPro Software | 2020 - 2022) Tj
+0 -12 Td
+(• Developed enterprise software for class-based businesses) Tj
+0 -12 Td
+(• Built payment processing systems) Tj
+0 -12 Td
+(• Implemented real-time notification systems) Tj
+0 -20 Td
+/F1 12 Tf
+(Freelance Web Developer) Tj
+0 -15 Td
+/F1 10 Tf
+(Various Clients | 2018 - 2020) Tj
+0 -12 Td
+(• Developed booking systems and custom web applications) Tj
+ET
+endstream
+endobj
+
+xref
+0 6
+0000000000 65535 f 
+0000000010 00000 n 
+0000000053 00000 n 
+0000000102 00000 n 
+0000000271 00000 n 
+0000000339 00000 n 
+trailer
+<<
+/Size 6
+/Root 1 0 R
+>>
+startxref
+1591
+%%EOF

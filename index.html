@@ -1,0 +1,2366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riley G Dev - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <script src="portfolio-data.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: #ffffff;
+            height: 200vh;
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+
+        /* Hide all scrollbars */
+        * {
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* Internet Explorer 10+ */
+        }
+        
+        *::-webkit-scrollbar {
+            display: none; /* WebKit */
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #ffffff;
+            border-bottom: 2px solid #000000;
+            z-index: 2000;
+            padding: 24px;
+            transform: translateY(-100%);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .nav-bar.visible {
+            transform: translateY(0);
+        }
+
+        .nav-logo {
+            display: flex;
+            gap: 0;
+        }
+
+        .nav-letter-box {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #000000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: normal;
+            color: #000000;
+            background-color: #ffffff;
+            box-shadow: 2px 2px 0px #000000;
+            cursor: pointer;
+            line-height: 0;
+        }
+
+
+
+        /* Special styling for the nav logo to remove borders between boxes */
+        .nav-letter-box:not(:first-child) {
+            border-left: none;
+        }
+
+        /* Menu Content */
+        .menu-content {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 64px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 500;
+            padding-top: 120px;
+        }
+
+        .menu-content.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .menu-description {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            color: #000000;
+            margin-bottom: 2rem;
+        }
+
+        .menu-profile-photo {
+            width: 120px;
+            height: 120px;
+            border: 2px solid #000000;
+            border-radius: 50%;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff;
+            flex-shrink: 0;
+        }
+
+        .menu-profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .menu-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            text-align: left;
+        }
+
+        .menu-description h1 {
+            font-size: 32px;
+            font-weight: 100;
+            margin: 0;
+            line-height: normal;
+        }
+
+        .menu-description p {
+            font-size: 24px;
+            font-weight: 100;
+            margin: 0;
+            line-height: normal;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+        }
+
+        .menu-item {
+            width: 250px;
+            height: 250px;
+            border: 2px solid #000000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: normal;
+            color: #000000;
+            background-color: #ffffff;
+            box-shadow: 4px 4px 0px #000000;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .menu-item:hover {
+            background-color: #f0f0f0;
+            box-shadow: 6px 6px 0px #000000;
+        }
+
+        /* Landing Animation Tweaks */
+        .landing-content {
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .landing-content.hidden {
+            opacity: 0;
+            transform: translateY(-50px);
+            pointer-events: none;
+        }
+
+        /* My Work Page */
+        .my-work-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* background-color: #ffffff; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1500;
+            transition: all 0.2s ease;
+            padding-top: 120px;
+        }
+
+        .my-work-page.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Recruiter Page */
+        .recruiter-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1500;
+            transition: all 0.2s ease;
+            padding-top: 120px;
+        }
+
+        .recruiter-page.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .recruiter-container {
+            width: 750px;
+            height: 750px;
+            background-color: #ffffff;
+            border: 2px solid #000000;
+            box-shadow: 4px 4px 0px #000000;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .recruiter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .recruiter-title {
+            font-size: 24px;
+            font-weight: normal;
+            color: #000000;
+            line-height: normal;
+        }
+
+        .recruiter-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            overflow-y: auto;
+        }
+
+        .divider-line {
+            width: 100px;
+            height: 2px;
+            background-color: #000000;
+            align-self: center;
+        }
+
+        .profile-section {
+            display: flex;
+            gap: 17px;
+            align-items: flex-start;
+        }
+
+        .profile-photo {
+            width: 99px;
+            height: 99px;
+            border: 2px solid #000000;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            flex-shrink: 0;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-info ul {
+            padding-left: 0;
+            margin: 0;
+            text-align: left;
+        }
+
+        .profile-info h2 {
+            font-size: 36px;
+            font-weight: normal;
+            color: #000000;
+            line-height: normal;
+            margin: 0 0 8px 0;
+        }
+
+        .profile-info ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 14px;
+            color: #000000;
+        }
+
+        .profile-info li {
+            margin-bottom: 4px;
+            position: relative;
+            padding-left: 21px;
+        }
+
+        .profile-info li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #000000;
+        }
+
+        .resume-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .resume-info h3 {
+            font-size: 36px;
+            font-weight: normal;
+            color: #000000;
+            line-height: normal;
+            margin: 0 0 4px 0;
+        }
+
+        .resume-info p {
+            font-size: 14px;
+            color: #000000;
+            margin: 0;
+        }
+
+        .resume-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .resume-button {
+            padding: 4px 16px;
+            border: 2px solid #000000;
+            background-color: #ffffff;
+            box-shadow: 4px 4px 0px #000000;
+            font-size: 20px;
+            font-weight: normal;
+            color: #000000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'JetBrains Mono', monospace;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+        }
+
+        .resume-button:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-1px);
+            box-shadow: 5px 5px 0px #000000;
+        }
+
+        .resume-button img {
+            width: 16px;
+            height: 16px;
+        }
+
+        .skills-section {
+            border: 2px solid #000000;
+            background-color: #ffffff;
+            box-shadow: 4px 4px 0px #000000;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .skills-row {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .skills-row span {
+            font-size: 20px;
+            color: #000000;
+        }
+
+        .skills-row img {
+            width: 8px;
+            height: 8px;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+        }
+
+        .contact-button {
+            padding: 4px 16px;
+            border: 2px solid #000000;
+            background-color: #ffffff;
+            box-shadow: 4px 4px 0px #000000;
+            font-size: 20px;
+            font-weight: normal;
+            color: #000000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'JetBrains Mono', monospace;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+        }
+
+        .contact-button:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-1px);
+            box-shadow: 5px 5px 0px #000000;
+        }
+
+        .contact-button img {
+            width: 16px;
+            height: 18px;
+        }
+
+        .contact-info-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ffffff;
+            border: 2px solid #000000;
+            box-shadow: 4px 4px 0px #000000;
+            padding: 24px;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info-popup.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .contact-info-popup h4 {
+            font-size: 24px;
+            margin: 0 0 16px 0;
+            color: #000000;
+        }
+
+        .contact-info-popup p {
+            font-size: 16px;
+            margin: 8px 0;
+            color: #000000;
+        }
+
+        .contact-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .contact-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* About Page */
+        .about-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1500;
+            transition: all 0.2s ease;
+            padding-top: 120px;
+        }
+
+        .about-page.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .about-container {
+            width: 750px;
+            height: 750px;
+            background-color: #ffffff;
+            border: 2px solid #000000;
+            box-shadow: 4px 4px 0px #000000;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .about-title {
+            font-size: 24px;
+            font-weight: normal;
+            color: #000000;
+            line-height: normal;
+        }
+
+        .about-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .about-profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 8px;
+        }
+
+        .about-photo-container {
+            width: 250px;
+            height: 250px;
+            border: 2px solid #000000;
+            border-radius: 50%;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff;
+        }
+
+        .about-profile-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .about-name {
+            font-size: 36px;
+            font-weight: normal;
+            color: #000000;
+            line-height: normal;
+            margin: 0;
+            text-align: center;
+        }
+
+        .about-role {
+            font-size: 14px;
+            font-weight: normal;
+            color: #000000;
+            line-height: normal;
+            margin: 0;
+            text-align: center;
+        }
+
+        .about-text {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .about-text p {
+            font-size: 20px;
+            color: #000000;
+            line-height: 1.4;
+            margin: 0;
+            text-align: left;
+        }
+
+        .about-contact-button {
+            padding: 8px 16px;
+            border: 2px solid #000000;
+            background-color: #ffffff;
+            box-shadow: 4px 4px 0px #000000;
+            font-size: 20px;
+            font-weight: normal;
+            color: #000000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'JetBrains Mono', monospace;
+            align-self: flex-start;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .about-contact-button:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-1px);
+            box-shadow: 5px 5px 0px #000000;
+        }
+
+        .about-section {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .about-section h3 {
+            font-size: 36px;
+            font-weight: normal;
+            color: #000000;
+            line-height: normal;
+            margin: 0;
+        }
+
+        .about-section p {
+            font-size: 20px;
+            color: #000000;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        /* Contact Page */
+        .contact-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1500;
+            transition: all 0.2s ease;
+            padding-top: 120px;
+        }
+
+        .contact-page.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .contact-container {
+            width: 750px;
+            height: 750px;
+            background-color: #ffffff;
+            border: 2px solid #000000;
+            box-shadow: 4px 4px 0px #000000;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .contact-title {
+            font-size: 24px;
+            font-weight: normal;
+            color: #000000;
+            line-height: normal;
+        }
+
+        .contact-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .contact-profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            margin-bottom: 8px;
+        }
+
+        .contact-name {
+            font-size: 36px;
+            font-weight: normal;
+            color: #000000;
+            line-height: normal;
+            margin: 0;
+            text-align: center;
+        }
+
+        .contact-role {
+            font-size: 14px;
+            font-weight: normal;
+            color: #000000;
+            line-height: normal;
+            margin: 0;
+            text-align: center;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .form-group label {
+            font-size: 16px;
+            font-weight: normal;
+            color: #000000;
+            line-height: normal;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 8px 12px;
+            border: 2px solid #000000;
+            background-color: #ffffff;
+            font-size: 16px;
+            font-family: 'JetBrains Mono', monospace;
+            color: #000000;
+            transition: all 0.3s ease;
+            min-height: 34px;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background-color: #f0f0f0;
+        }
+
+        .form-group textarea {
+            min-height: 122px;
+            resize: vertical;
+            padding-top: 8px;
+        }
+
+        .contact-submit-button {
+            padding: 8px 16px;
+            border: 2px solid #000000;
+            background-color: #ffffff;
+            box-shadow: 4px 4px 0px #000000;
+            font-size: 20px;
+            font-weight: normal;
+            color: #000000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'JetBrains Mono', monospace;
+            align-self: flex-start;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .contact-submit-button:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-1px);
+            box-shadow: 5px 5px 0px #000000;
+        }
+
+        .my-work-container {
+            width: 750px;
+            height: 750px;
+            background-color: #ffffff;
+            border: 2px solid #000000;
+            box-shadow: 4px 4px 0px #000000;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            transform: scale(1);
+            transition: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+
+        .my-work-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .back-arrow {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            color: #000000;
+            transition: transform 0.3s ease;
+        }
+
+        .back-arrow:hover {
+            transform: translateX(-3px);
+        }
+
+        .my-work-title {
+            font-size: 24px;
+            font-weight: normal;
+            color: #000000;
+            line-height: 0;
+        }
+
+        .filter-container {
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        .filter-row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            padding-bottom: 4px;
+            cursor: grab;
+            user-select: none;
+        }
+
+        .filter-row:active {
+            cursor: grabbing;
+        }
+
+        .filter-row::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .filter-row::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .filter-row::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 2px;
+        }
+
+        .filter-row::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .filter-fade {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 4px;
+            width: 20px;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.9));
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .filter-fade.visible {
+            opacity: 1;
+        }
+
+        .filter-header {
+            font-size: 12px;
+            font-weight: 800;
+            color: rgba(0, 0, 0, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.84px;
+            line-height: normal;
+            margin-bottom: -14px;
+        }
+
+        .filter-button {
+            padding: 6px 12px;
+            border: 2px solid #000000;
+            background-color: #ffffff;
+            box-shadow: 2px 2px 0px #000000;
+            font-size: 14px;
+            font-weight: normal;
+            color: #000000;
+            line-height: normal;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'JetBrains Mono', monospace;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .filter-button:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-1px);
+            box-shadow: 3px 3px 0px #000000;
+        }
+
+        .filter-button.active {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .filter-button.active:hover {
+            background-color: #333333;
+        }
+
+        .forward-arrow {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #000000;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .work-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            position: relative;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .work-content.slide-left {
+            transform: translateX(-100%);
+        }
+
+        /* Project Detail View */
+        .project-detail {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            padding: 0;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .project-detail.visible {
+            transform: translateX(0);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .project-back-arrow {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            color: #000000;
+            transition: transform 0.3s ease;
+        }
+
+        .project-back-arrow:hover {
+            transform: translateX(-3px);
+        }
+
+        .project-title {
+            font-size: 24px;
+            font-weight: normal;
+            color: #000000;
+            text-align: center;
+            line-height: normal;
+        }
+
+        .project-forward-arrow {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #000000;
+        }
+
+        .project-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 36px;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .project-tag {
+            padding: 4px 16px;
+            border: 2px solid #000000;
+            background-color: #ffffff;
+            box-shadow: 4px 4px 0px #000000;
+            font-size: 20px;
+            font-weight: normal;
+            color: #000000;
+            line-height: normal;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .project-tag:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 5px 5px 0px #000000;
+        }
+
+        .project-tag.expandable {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            height: auto;
+        }
+
+        .project-tag.expandable.expanded {
+            gap: 16px;
+        }
+
+        .tech-stack-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            width: 100%;
+        }
+
+        .tech-stack-content {
+            width: 100%;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+        }
+
+        .tech-stack-content.visible {
+            max-height: 400px;
+            opacity: 1;
+        }
+
+        .tech-stack-label {
+            font-size: 14px;
+            font-weight: 800;
+            color: rgba(0, 0, 0, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.84px;
+            line-height: normal;
+            margin-bottom: 8px;
+        }
+
+        .tech-stack-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .tech-stack-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            height: 48px;
+            padding: 0;
+        }
+
+        .tech-stack-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .tech-stack-icon img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        .tech-stack-name {
+            font-size: 20px;
+            font-weight: normal;
+            color: #000000;
+            line-height: normal;
+        }
+
+        .project-body {
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+        }
+
+        .project-text {
+            flex: 1;
+            font-size: 20px;
+            font-weight: normal;
+            color: #000000;
+            line-height: normal;
+            text-align: left;
+        }
+
+        .project-image {
+            width: 332px;
+            height: 186px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            box-shadow: 0px 6px 19px -6px rgba(24, 39, 75, 0.12), 0px 10px 22px -4px rgba(24, 39, 75, 0.1);
+            flex-shrink: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .project-description {
+            font-size: 20px;
+            font-weight: normal;
+            color: #000000;
+            line-height: normal;
+            text-align: left;
+        }
+
+        .work-section {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: rgba(0, 0, 0, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.84px;
+            line-height: 0;
+        }
+
+        .work-items {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .work-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .work-item:hover {
+            transform: translateX(4px);
+        }
+
+        .work-item.highlighted {
+            background-color: rgba(0, 0, 0, 0.1);
+            margin: 0 -15px;
+            padding: 8px 15px;
+        }
+
+        .work-item-title {
+            font-size: 20px;
+            font-weight: normal;
+            color: #000000;
+            line-height: 0;
+        }
+
+        .work-item-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #000000;
+            background-color: #ffffff;
+            font-size: 12px;
+        }
+
+        /* Morphing Animation */
+        .menu-item.morphing {
+            position: fixed !important;
+            z-index: 2000 !important;
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            position: relative;
+            width: 100%;
+        }
+
+        .name-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0;
+            margin-bottom: 20px;
+        }
+
+        .name-grid.bottom-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            justify-self: center;
+        }
+
+        .letter-box {
+            width: 200px;
+            height: 200px;
+            border: 2px solid #000000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 96px;
+            font-weight: normal;
+            color: #000000;
+            background-color: #ffffff;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 4px 4px 0px #000000;
+            line-height: 0;
+        }
+
+        .letter-box:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 6px 6px 0px #000000;
+        }
+
+        .icon-container {
+            margin-top: 2rem;
+            width: 32px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mouse-icon {
+            width: 24px;
+            height: 40px;
+            border: 2px solid #000000;
+            border-radius: 12px;
+            position: relative;
+            background-color: #ffffff;
+            animation: pulse 2s infinite;
+        }
+
+        .mouse-icon::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 6px;
+            background-color: #000000;
+            border-radius: 1px;
+            animation: scroll-dot 2s infinite;
+        }
+
+        .mouse-icon::after {
+            content: '';
+            position: absolute;
+            bottom: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 8px solid #000000;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes scroll-dot {
+            0% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                opacity: 0.5;
+                transform: translateX(-50%) translateY(8px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .letter-box {
+                width: 150px;
+                height: 150px;
+                font-size: 72px;
+                box-shadow: 3px 3px 0px #000000;
+            }
+
+            .letter-box:hover {
+                box-shadow: 5px 5px 0px #000000;
+            }
+
+            .name-grid {
+                margin-bottom: 15px;
+            }
+
+            .menu-item {
+                width: 200px;
+                height: 200px;
+                font-size: 18px;
+            }
+
+            .menu-description h1 {
+                font-size: 28px;
+            }
+
+            .menu-description p {
+                font-size: 20px;
+            }
+
+            .menu-description {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+
+            .menu-text {
+                text-align: center;
+            }
+
+            .menu-profile-photo {
+                width: 100px;
+                height: 100px;
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .letter-box {
+                width: 100px;
+                height: 100px;
+                font-size: 48px;
+                border: 2px solid #000000;
+                box-shadow: 2px 2px 0px #000000;
+            }
+
+            .letter-box:hover {
+                box-shadow: 4px 4px 0px #000000;
+            }
+
+            .name-grid {
+                margin-bottom: 10px;
+            }
+
+            .nav-letter-box {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            .nav-letter-box:not(:first-child) {
+                border-left: none;
+            }
+
+            .menu-item {
+                width: 150px;
+                height: 150px;
+                font-size: 16px;
+            }
+
+            .menu-description h1 {
+                font-size: 24px;
+            }
+
+            .menu-description p {
+                font-size: 18px;
+            }
+
+            .menu-description {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+
+            .menu-text {
+                text-align: center;
+            }
+
+            .menu-profile-photo {
+                width: 80px;
+                height: 80px;
+                padding: 10px;
+            }
+
+            .menu-content {
+                gap: 48px;
+                padding-top: 100px;
+            }
+
+            .my-work-container {
+                width: 90vw;
+                height: 80vh;
+                max-width: 600px;
+                max-height: 700px;
+            }
+
+            .recruiter-container {
+                width: 90vw;
+                height: 80vh;
+                max-width: 600px;
+                max-height: 700px;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                gap: 16px;
+                align-items: center;
+                text-align: center;
+            }
+
+            .profile-photo {
+                width: 80px;
+                height: 80px;
+                padding: 12px;
+            }
+
+            .profile-info h2 {
+                font-size: 28px;
+            }
+
+            .resume-section {
+                flex-direction: column;
+                gap: 16px;
+                align-items: center;
+                text-align: center;
+            }
+
+            .resume-info h3 {
+                font-size: 28px;
+            }
+
+            .skills-section {
+                padding: 12px;
+            }
+
+            .skills-row {
+                gap: 8px;
+            }
+
+            .skills-row span {
+                font-size: 16px;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .resume-button, .contact-button {
+                font-size: 16px;
+                padding: 8px 12px;
+            }
+
+            .project-text {
+                font-size: 18px;
+            }
+
+            .project-title {
+                font-size: 20px;
+            }
+
+            .project-tag {
+                font-size: 16px;
+                padding: 3px 12px;
+            }
+
+            .project-body {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .project-image {
+                width: 100%;
+                height: 140px;
+            }
+
+            .project-description {
+                font-size: 16px;
+            }
+
+            .work-item-title {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 12px;
+            }
+
+            .mouse-icon {
+                width: 20px;
+                height: 32px;
+                border: 2px solid #000000;
+                border-radius: 10px;
+            }
+
+            .mouse-icon::before {
+                top: 5px;
+                width: 1.5px;
+                height: 5px;
+            }
+
+            .mouse-icon::after {
+                bottom: -10px;
+                border-left: 3px solid transparent;
+                border-right: 3px solid transparent;
+                border-top: 6px solid #000000;
+            }
+
+            .about-container {
+                width: 90vw;
+                height: 80vh;
+                max-width: 600px;
+                max-height: 700px;
+            }
+
+            .about-photo-container {
+                width: 200px;
+                height: 200px;
+                padding: 24px;
+            }
+
+            .about-name {
+                font-size: 28px;
+            }
+
+            .about-role {
+                font-size: 12px;
+            }
+
+            .about-text p {
+                font-size: 18px;
+            }
+
+            .about-contact-button {
+                font-size: 18px;
+                padding: 6px 12px;
+            }
+
+            .contact-container {
+                width: 90vw;
+                height: 80vh;
+                max-width: 600px;
+                max-height: 700px;
+            }
+
+            .contact-name {
+                font-size: 28px;
+            }
+
+            .contact-role {
+                font-size: 12px;
+            }
+
+            .contact-submit-button {
+                font-size: 18px;
+                padding: 6px 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .letter-box {
+                width: 60px;
+                height: 60px;
+                font-size: 28px;
+                border: 1px solid #000000;
+                box-shadow: 2px 2px 0px #000000;
+            }
+
+            .letter-box:hover {
+                box-shadow: 3px 3px 0px #000000;
+            }
+
+            .name-grid {
+                margin-bottom: 8px;
+            }
+
+            .nav-letter-box {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+
+            .nav-letter-box:not(:first-child) {
+                border-left: none;
+            }
+
+            .nav-bar {
+                padding: 16px;
+            }
+
+            .menu-item {
+                width: 120px;
+                height: 120px;
+                font-size: 14px;
+            }
+
+            .menu-description h1 {
+                font-size: 20px;
+            }
+
+            .menu-description p {
+                font-size: 16px;
+            }
+
+            .menu-description {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+
+            .menu-text {
+                text-align: center;
+            }
+
+            .menu-profile-photo {
+                width: 60px;
+                height: 60px;
+                padding: 8px;
+            }
+
+            .menu-content {
+                gap: 32px;
+                padding-top: 80px;
+            }
+
+            .my-work-container {
+                width: 95vw;
+                height: 85vh;
+                max-width: 400px;
+                max-height: 600px;
+                padding: 12px;
+                gap: 20px;
+            }
+
+            .recruiter-container {
+                width: 95vw;
+                height: 85vh;
+                max-width: 400px;
+                max-height: 600px;
+                padding: 12px;
+                gap: 20px;
+            }
+
+            .profile-info h2 {
+                font-size: 24px;
+            }
+
+            .profile-info li {
+                font-size: 12px;
+            }
+
+            .resume-info h3 {
+                font-size: 24px;
+            }
+
+            .resume-info p {
+                font-size: 12px;
+            }
+
+            .skills-row span {
+                font-size: 14px;
+            }
+
+            .resume-button, .contact-button {
+                font-size: 14px;
+                padding: 6px 10px;
+            }
+
+            .project-text {
+                font-size: 14px;
+            }
+
+            .project-title {
+                font-size: 18px;
+            }
+
+            .project-tag {
+                font-size: 14px;
+                padding: 2px 8px;
+            }
+
+            .project-tags {
+                gap: 12px;
+            }
+
+            .project-content {
+                gap: 24px;
+            }
+
+            .project-image {
+                width: 100%;
+                height: 120px;
+            }
+
+            .project-description {
+                font-size: 14px;
+            }
+
+            .work-item-title {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 11px;
+            }
+
+            .my-work-title {
+                font-size: 20px;
+            }
+
+            .mouse-icon {
+                width: 18px;
+                height: 28px;
+                border: 2px solid #000000;
+                border-radius: 9px;
+            }
+
+            .mouse-icon::before {
+                top: 4px;
+                width: 1px;
+                height: 4px;
+            }
+
+            .mouse-icon::after {
+                bottom: -8px;
+                border-left: 3px solid transparent;
+                border-right: 3px solid transparent;
+                border-top: 5px solid #000000;
+            }
+
+            .about-container {
+                width: 95vw;
+                height: 85vh;
+                max-width: 400px;
+                max-height: 600px;
+                padding: 12px;
+                gap: 20px;
+            }
+
+            .about-photo-container {
+                width: 150px;
+                height: 150px;
+                padding: 20px;
+            }
+
+            .about-name {
+                font-size: 24px;
+            }
+
+            .about-role {
+                font-size: 11px;
+            }
+
+            .about-text p {
+                font-size: 14px;
+            }
+
+            .about-contact-button {
+                font-size: 14px;
+                padding: 4px 8px;
+            }
+
+            .contact-container {
+                width: 95vw;
+                height: 85vh;
+                max-width: 400px;
+                max-height: 600px;
+                padding: 12px;
+                gap: 20px;
+            }
+
+            .contact-name {
+                font-size: 24px;
+            }
+
+            .contact-role {
+                font-size: 11px;
+            }
+
+            .contact-submit-button {
+                font-size: 14px;
+                padding: 4px 8px;
+            }
+        }
+    </style>
+</head>
+<body x-data="portfolioData" x-init="init()">
+
+    <script>
+        document.addEventListener('alpine:init', () => {
+            // This ensures Alpine.js is fully loaded before any components try to access the data
+        });
+    </script>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar" :class="{ 'visible': showMenu }">
+        <div class="nav-logo">
+            <template x-for="(item, index) in navLetters" :key="index">
+                <div 
+                    class="nav-letter-box"
+                    x-text="item.letter"
+                    @click="updateUrl('')">
+                </div>
+            </template>
+        </div>
+    </nav>
+
+    <!-- Menu Content -->
+    <div class="menu-content" :class="{ 'visible': showMenu }">
+        <div class="menu-description">
+            <div class="menu-profile-photo">
+                <img src="images/profile-photo.png" alt="Riley Goodman">
+            </div>
+            <div class="menu-text">
+                <h1>Software Engineer</h1>
+                <p>PHP/Laravel Specialist</p>
+                <p>I love to make things</p>
+            </div>
+        </div>
+        
+        <div class="menu-grid">
+            <div class="menu-item" 
+                 @click="openMyWork()">
+                My Work
+            </div>
+            <div class="menu-item" @click="openRecruiterPage()">
+                <div>
+                    <div>Recruiters</div>
+                    <div>Click here</div>
+                </div>
+            </div>
+            <div class="menu-item" @click="openAboutPage()">
+                About Me
+            </div>
+            <div class="menu-item" @click="openContactPage()">
+                Contact
+            </div>
+        </div>
+    </div>
+
+    <!-- My Work Page -->
+    <div class="my-work-page" :class="{ 'visible': showMyWork }">
+        <div class="my-work-container">
+            <div class="my-work-header">
+                <div class="back-arrow" @click="closeMyWork()">←</div>
+                <div class="my-work-title">My Work</div>
+                <div class="forward-arrow">→</div>
+            </div>
+            
+            <div class="work-content" :class="{ 'slide-left': showProjectDetail }">
+                <!-- Filter Header and Row -->
+                <div class="filter-header">Filter by tech stack</div>
+                <div class="filter-container">
+                    <div class="filter-row" 
+                         @mousedown="startDrag($event)"
+                         @mousemove="onDrag($event)"
+                         @mouseup="endDrag($event)"
+                         @mouseleave="endDrag($event)"
+                         @scroll="checkScrollFade($event)"
+                         x-init="setTimeout(() => checkScrollFade({currentTarget: $el}), 100)">
+                        <button class="filter-button" :class="{ 'active': activeFilter === 'all' }" @click="setFilter('all')">All</button>
+                        <template x-for="filter in filters" :key="filter">
+                            <button class="filter-button" :class="{ 'active': activeFilter === filter }" @click="setFilter(filter)" x-text="filter"></button>
+                        </template>
+                    </div>
+                    <div class="filter-fade" :class="{ 'visible': showFilterFade }"></div>
+                </div>
+                
+                <!-- As an Employee -->
+                <div class="work-section" x-show="shouldShowProject('firefly') || shouldShowProject('iclassipro')" x-transition>
+                    <div class="section-title">As an Employee</div>
+                    <div class="work-items">
+                        <div class="work-item" @click="openProject('firefly')" x-show="shouldShowProject('firefly')" x-transition>
+                            <div class="work-item-title">Firefly - Analytics Dashboard</div>
+                            <div class="work-item-icon">→</div>
+                        </div>
+                        <div class="work-item" @click="openProject('iclassipro')" x-show="shouldShowProject('iclassipro')" x-transition>
+                            <div class="work-item-title">iClassPro - Enterprise Software</div>
+                            <div class="work-item-icon">→</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- As a Freelancer -->
+                <div class="work-section" x-show="shouldShowProject('notatesla') || shouldShowProject('funpianos') || activeFilter === 'all'" x-transition>
+                    <div class="section-title">As a Freelancer</div>
+                    <div class="work-items">
+                        <div class="work-item" @click="openProject('notatesla')" x-show="shouldShowProject('notatesla') || activeFilter === 'all'" x-transition>
+                            <div class="work-item-title">Not a Tesla App</div>
+                            <div class="work-item-icon">→</div>
+                        </div>
+                        <div class="work-item highlighted" @click="openProject('funpianos')" x-show="shouldShowProject('funpianos')" x-transition>
+                            <div class="work-item-title">The Fun Pianos Planner</div>
+                            <div class="work-item-icon">→</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- As a Side-Hustler -->
+                <div class="work-section" x-show="shouldShowProject('skillboards') || activeFilter === 'all'" x-transition>
+                    <div class="section-title">As a Side-Hustler</div>
+                    <div class="work-items">
+                        <div class="work-item" @click="openProject('skillboards')" x-show="shouldShowProject('skillboards')" x-transition>
+                            <div class="work-item-title">Skillboards</div>
+                            <div class="work-item-icon">→</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Just Messin' Around -->
+                <div class="work-section" x-show="activeFilter === 'all'">
+                    <div class="section-title">Just Messin' Around</div>
+                    <div class="work-items">
+                        <div class="work-item" @click="openProject('todoninja')">
+                            <div class="work-item-title">To-do Ninja</div>
+                            <div class="work-item-icon">→</div>
+                        </div>
+                        <div class="work-item" @click="openProject('biozone')">
+                            <div class="work-item-title">Biozone</div>
+                            <div class="work-item-icon">→</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Detail View -->
+            <div class="project-detail" :class="{ 'visible': showProjectDetail }">
+                <div class="project-header">
+                    <div class="project-back-arrow" @click="closeProject()">←</div>
+                    <div class="project-title" x-text="selectedProject?.title || ''"></div>
+                    <div class="project-forward-arrow">→</div>
+                </div>
+                
+                <div class="project-content">
+                    <div class="project-tags">
+                        <div class="project-tag" x-text="selectedProject?.company || ''"></div>
+                        <div class="project-tag expandable" :class="{ 'expanded': expandedTechStack }" @click="toggleTechStack()">
+                            <div class="tech-stack-header">
+                                <span x-text="selectedProject?.techStack || ''"></span>
+                                <span x-text="expandedTechStack ? '↑' : '→'"></span>
+                            </div>
+                            <div class="tech-stack-content" :class="{ 'visible': expandedTechStack }">
+                                <div class="tech-stack-label">From front to back:</div>
+                                <div class="tech-stack-items">
+                                    <template x-for="(item, index) in (selectedProject?.techStackItems || [])" :key="index">
+                                        <div class="tech-stack-item">
+                                            <div class="tech-stack-icon">
+                                                <img :src="item.image || ''" :alt="item.name" x-show="item.image" />
+                                                <span x-show="!item.image" x-text="item.icon"></span>
+                                            </div>
+                                            <div class="tech-stack-name" x-text="item.name"></div>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-body">
+                        <div class="project-text" x-text="selectedProject?.description?.split('\n\n')[0] || ''"></div>
+                        <div class="project-image" :style="`background-image: url('${selectedProject?.image || ''}')`"></div>
+                    </div>
+                    
+                    <div class="project-description">
+                        <template x-for="(paragraph, index) in (selectedProject?.description?.split('\n\n') || []).slice(1)" :key="index">
+                            <p x-text="paragraph" style="margin-bottom: 1em;"></p>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recruiter Page -->
+    <div class="recruiter-page" :class="{ 'visible': showRecruiterPage }">
+        <div class="recruiter-container">
+            <div class="recruiter-header">
+                <div class="back-arrow" @click="closeRecruiterPage()">←</div>
+                <div class="recruiter-title">Recruiter Home</div>
+                <div class="forward-arrow">→</div>
+            </div>
+            
+            <div class="recruiter-content">
+                <div class="divider-line"></div>
+                
+                <!-- Profile Section -->
+                <div class="profile-section">
+                    <div class="profile-photo">
+                        <img src="./images/profile-photo.png" alt="Riley G Dev Profile Photo">
+                    </div>
+                    <div class="profile-info">
+                        <h2>Riley In 3 sentences</h2>
+                        <ul>
+                            <li>27 years old, programming for 8 years</li>
+                            <li>PHP for 6 years, Laravel for 5, open to learning anything</li>
+                            <li>Recently laid off, currently open to new opportunities</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="divider-line"></div>
+
+                <!-- Resume Section -->
+                <div class="resume-section">
+                    <div class="resume-info">
+                        <h3>Resumé</h3>
+                        <p>Software Engineer, PHP/Laravel specialist</p>
+                    </div>
+                    <div class="resume-buttons">
+                        <a href="./Resume.pdf" target="_blank" class="resume-button">
+                            <span>View PDF</span>
+                            <img src="./images/external-link.svg" alt="External link">
+                        </a>
+                        <a href="./Resume.pdf" download="Riley_Goodman_Resume.pdf" class="resume-button">
+                            <span>Download PDF</span>
+                            <img src="./images/download-icon.svg" alt="Download">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="divider-line"></div>
+
+                <!-- Skills Section -->
+                <div class="skills-section">
+                    <div class="skills-row">
+                        <span>PHP</span>
+                        <img src="./images/bullet-point.svg" alt="•">
+                        <span>Laravel</span>
+                        <img src="./images/bullet-point.svg" alt="•">
+                        <span>Javascript</span>
+                        <img src="./images/bullet-point.svg" alt="•">
+                        <span>SQL</span>
+                    </div>
+                    <div class="skills-row">
+                        <span>Adobe CC</span>
+                        <img src="./images/bullet-point.svg" alt="•">
+                        <span>Livewire</span>
+                        <img src="./images/bullet-point.svg" alt="•">
+                        <span>React</span>
+                    </div>
+                    <div class="skills-row">
+                        <span>Next.js</span>
+                        <img src="./images/bullet-point.svg" alt="•">
+                        <span>AWS</span>
+                        <img src="./images/bullet-point.svg" alt="•">
+                        <span>Forge</span>
+                        <img src="./images/bullet-point.svg" alt="•">
+                        <span>Figma</span>
+                    </div>
+                </div>
+
+                <div class="divider-line"></div>
+
+                <!-- Contact Buttons -->
+                <div class="contact-buttons">
+                    <button class="contact-button" @click="toggleContactInfo()">
+                        <span>Show contact info</span>
+                        <img src="./images/contact-icon.svg" alt="Contact">
+                    </button>
+                    <a href="https://github.com/rileygweb" target="_blank" class="contact-button">
+                        <span>Github</span>
+                        <img src="./images/contact-icon.svg" alt="Github">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Info Popup -->
+    <div class="contact-overlay" :class="{ 'visible': showContactInfo }" @click="toggleContactInfo()"></div>
+    <div class="contact-info-popup" :class="{ 'visible': showContactInfo }">
+        <h4>Contact Information</h4>
+        <p><strong>Name:</strong> Riley Goodman</p>
+        <p><strong>Email:</strong> hello@rileyg.dev</p>
+        <p><strong>Phone:</strong> (720) 291-0714</p>
+        <p><strong>LinkedIn:</strong> linkedin.com/in/rileygweb</p>
+        <p><strong>Location:</strong> Anthem, AZ - Open to remote / Hybrid / On-site</p>
+    </div>
+
+    <!-- Landing Page Content -->
+    <div class="main-container">
+        <div class="landing-content" :class="{ 'hidden': hasScrolled }">
+            <div class="logo-container">
+                <!-- Top row: RILEY -->
+                <div class="name-grid">
+                    <template x-for="(item, index) in letters" :key="index">
+                        <div 
+                            class="letter-box"
+                            :data-letter="item.letter"
+                            x-show="mounted"
+                            x-transition:enter="transition ease-out duration-1200 delay-[var(--delay)]"
+                            x-transition:enter-start="opacity-0 scale-0 rotate-180"
+                            x-transition:enter-end="opacity-100 scale-100 rotate-0"
+                            :style="`--delay: ${item.delay}`"
+                            @mouseenter="$el.style.transform = 'translateY(-4px) rotate(2deg)'"
+                            @mouseleave="$el.style.transform = 'translateY(0) rotate(0deg)'"
+                            x-text="item.letter">
+                        </div>
+                    </template>
+                </div>
+
+                <!-- Bottom row: G DEV -->
+                <div class="name-grid bottom-row">
+                    <template x-for="(item, index) in bottomLetters" :key="index">
+                        <div 
+                            class="letter-box"
+                            :data-letter="item.letter"
+                            x-show="mounted"
+                            x-transition:enter="transition ease-out duration-1200 delay-[var(--delay)]"
+                            x-transition:enter-start="opacity-0 scale-0 rotate-180"
+                            x-transition:enter-end="opacity-100 scale-100 rotate-0"
+                            :style="`--delay: ${item.delay}`"
+                            @mouseenter="$el.style.transform = 'translateY(-4px) rotate(-2deg)'"
+                            @mouseleave="$el.style.transform = 'translateY(0) rotate(0deg)'"
+                            x-text="item.letter">
+                        </div>
+                    </template>
+                </div>
+
+                <!-- Mouse scroll indicator -->
+                <div class="icon-container">
+                    <div 
+                        class="mouse-icon"
+                        x-show="mounted"
+                        x-transition:enter="transition ease-out duration-1000 delay-2000"
+                        x-transition:enter-start="opacity-0 transform translate-y-4"
+                        x-transition:enter-end="opacity-100 transform translate-y-0">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Extra content to enable scrolling -->
+    <div style="height: 100vh; display: flex; align-items: center; justify-content: center; color: #666; font-size: 18px;">
+        <p>Scroll back up to return to the landing page</p>
+    </div>
+
+    <!-- About Page -->
+    <div class="about-page" x-show="showAboutPage" :class="{'visible': showAboutPage}">
+        <div class="about-container">
+            <div class="about-header">
+                <div class="about-title">About me</div>
+                <button class="close-button" @click="closeAboutPage()">
+                    <span style="font-size: 20px; line-height: 1;">×</span>
+                </button>
+            </div>
+            <div class="about-content">
+                <div class="about-profile-section">
+                    <div class="about-photo-container">
+                        <img src="images/profile-photo.png" alt="Riley Goodman" class="about-profile-photo">
+                    </div>
+                    <h2 class="about-name">Riley Goodman</h2>
+                    <p class="about-role">Software Engineer, PHP/Laravel specialist</p>
+                </div>
+                
+                <div class="about-text">
+                    <p>I'm a 26 year old software engineer, soon-to-be father and lover of life. My interest in programming was sparked in 10th grade computer class when I accidentally opened Chrome's developer tools and realized I could make the Google homepage say whatever I wanted. It was right then and there that I decided I wanted to be an HTML Engineer, making 6 figures fresh out of a 12 week bootcamp.</p>
+                    
+                    <p>Just kidding. I also don't take life very seriously. But in actuality, that moment did eventually lead me to landing my first job as a web designer, and the rest is history. For years I accumulated lists of software ideas early in my career with no outlet to turn them into reality, until I was introduced to Laravel, and I quickly fell in love. I am technology agnostic - I will work with whatever my company needs, Laravel or not - but PHP/Laravel are without a doubt the strongest weapons in my toolbelt.</p>
+                    
+                    <p>I have a beautiful wife, two annoying dogs, and a baby boy due in April! They are what gets me out of bed in the morning... sometimes multiple times per morning. I also have entirely too many hobbies, and probably always will. Some fun facts about me: my fastest time on a 3x3 Rubik's cube is 11.74s, I can and will beat you at arm wrestling, I beatbox and just got my own loopstation so I WILL be famous soon... I love to write (as you can see), I've been drumming since I was 6, I'm 3 inches taller than my dad, and this website is 100% black and white because my design weakspot is color theory.</p>
+                    
+                    <p>Sometimes I wonder where my career would be if I had put all that time into my programming. I guess we'll never know. But hey, the skill of learning new skills certainly carries over into the world of software engineering, so at least there's that.</p>
+                    
+                    <p>Thanks for reading that wall of text. Shame on you if you were trying to skim it and this is the first sentence you are actually reading. If you still want to get in touch with me, there's a button for that right here:</p>
+                </div>
+                
+                <button class="about-contact-button" @click="closeAboutPage(); openContactPage();">
+                    <span>Get in touch</span>
+                    <img src="images/contact-icon.svg" alt="Contact" style="width: 16px; height: 18px;">
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Me Page -->
+    <div class="contact-page" x-show="showContactPage" :class="{'visible': showContactPage}">
+        <div class="contact-container">
+            <div class="contact-header">
+                <div class="contact-title">Contact me</div>
+                <button class="close-button" @click="closeContactPage()">
+                    <span style="font-size: 20px; line-height: 1;">×</span>
+                </button>
+            </div>
+            <div class="contact-content">
+                <div class="contact-profile-section">
+                    <h2 class="contact-name">Riley Goodman</h2>
+                    <p class="contact-role">Software Engineer, PHP/Laravel specialist</p>
+                </div>
+                
+                <form class="contact-form" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+                    <!-- Hidden field for Netlify bot protection -->
+                    <input type="hidden" name="form-name" value="contact" />
+                    <div style="display: none;">
+                        <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="name">Your name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Your phone number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">What can I do for you?</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="contact-submit-button">
+                        <span>Submit</span>
+                        <img src="images/contact-icon.svg" alt="Submit" style="width: 16px; height: 18px;">
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
