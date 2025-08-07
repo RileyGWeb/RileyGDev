@@ -39,6 +39,7 @@ window.portfolioData = {
     showContactInfo: false,
     showAboutPage: false,
     showContactPage: false,
+    contactMode: 'form', // 'form' or 'info'
     projects: {
         'firefly': {
             slug: 'analytics-dashboard',
@@ -302,6 +303,10 @@ As of Wednesday, August 6th, '25, that's where Skillboards sits. I recently lost
     },
     closeContactPage() {
         this.showContactPage = false;
+        this.contactMode = 'form'; // Reset to form mode when closing
+    },
+    setContactMode(mode) {
+        this.contactMode = mode;
     },
     closeMyWork() {
         this.showMyWork = false;

@@ -73,6 +73,10 @@
         .nav-logo {
             display: flex;
             gap: 0;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
 
         .nav-letter-box {
@@ -94,6 +98,10 @@
 
 
         /* Special styling for the nav logo to remove borders between boxes */
+        .nav-letter-box:first-child {
+            border-left: 2px solid #000000;
+        }
+        
         .nav-letter-box:not(:first-child) {
             border-left: none;
         }
@@ -132,16 +140,17 @@
         }
 
         .menu-profile-photo {
-            width: 120px;
-            height: 120px;
+            width: 140px;
+            height: 140px;
             border: 2px solid #000000;
             border-radius: 50%;
-            padding: 16px;
+            padding: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             background-color: #ffffff;
             flex-shrink: 0;
+            overflow: hidden;
         }
 
         .menu-profile-photo img {
@@ -310,15 +319,15 @@
         }
 
         .profile-photo {
-            width: 99px;
-            height: 99px;
+            width: 120px;
+            height: 120px;
             border: 2px solid #000000;
             border-radius: 50%;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 15px;
+            padding: 0;
             flex-shrink: 0;
         }
 
@@ -604,15 +613,16 @@
         }
 
         .about-photo-container {
-            width: 250px;
-            height: 250px;
+            width: 280px;
+            height: 280px;
             border: 2px solid #000000;
             border-radius: 50%;
-            padding: 30px;
+            padding: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             background-color: #ffffff;
+            overflow: hidden;
         }
 
         .about-profile-photo {
@@ -675,6 +685,80 @@
             background-color: #f0f0f0;
             transform: translateY(-1px);
             box-shadow: 5px 5px 0px #000000;
+        }
+
+        .close-button {
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            border: 2px solid #000000;
+            background-color: #ffffff;
+            box-shadow: 2px 2px 0px #000000;
+            font-size: 16px;
+            font-weight: normal;
+            color: #000000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'JetBrains Mono', monospace;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        .close-button:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-1px);
+            box-shadow: 3px 3px 0px #000000;
+        }
+
+        .contact-mode-toggle {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+
+        .contact-mode-button {
+            background-color: #fff;
+            border: 2px solid #000;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 2px 2px 0px #000;
+            transition: all 0.3s ease;
+        }
+
+        .contact-mode-button:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-1px);
+            box-shadow: 3px 3px 0px #000;
+        }
+
+        .contact-mode-button.active {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .contact-info-display {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .contact-info-item {
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 2px solid #000;
+            background-color: #fff;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            box-shadow: 2px 2px 0px #000;
+        }
+
+        .contact-info-item strong {
+            font-weight: 500;
         }
 
         .about-section {
@@ -1073,16 +1157,6 @@
             line-height: normal;
         }
 
-        .project-forward-arrow {
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            color: #000000;
-        }
-
         .project-content {
             flex: 1;
             display: flex;
@@ -1310,6 +1384,10 @@
             min-height: 100vh;
             position: relative;
             width: 100%;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
 
         .name-grid {
@@ -1460,9 +1538,9 @@
             }
 
             .menu-profile-photo {
-                width: 100px;
-                height: 100px;
-                padding: 12px;
+                width: 120px;
+                height: 120px;
+                padding: 0;
             }
         }
 
@@ -1490,7 +1568,8 @@
             }
 
             .nav-letter-box:not(:first-child) {
-                border-left: none;
+
+                border-left: 2px solid #000000!important;
             }
 
             .menu-item {
@@ -1518,9 +1597,9 @@
             }
 
             .menu-profile-photo {
-                width: 80px;
-                height: 80px;
-                padding: 10px;
+                width: 100px;
+                height: 100px;
+                padding: 0;
             }
 
             .menu-content {
@@ -1550,9 +1629,9 @@
             }
 
             .profile-photo {
-                width: 80px;
-                height: 80px;
-                padding: 12px;
+                width: 100px;
+                height: 100px;
+                padding: 0;
             }
 
             .profile-info h2 {
@@ -1655,9 +1734,9 @@
             }
 
             .about-photo-container {
-                width: 200px;
-                height: 200px;
-                padding: 24px;
+                width: 220px;
+                height: 220px;
+                padding: 0;
             }
 
             .about-name {
@@ -1722,7 +1801,8 @@
             }
 
             .nav-letter-box:not(:first-child) {
-                border-left: none;
+
+                border-left: 2px solid #000000!important;
             }
 
             .nav-bar {
@@ -1754,9 +1834,9 @@
             }
 
             .menu-profile-photo {
-                width: 60px;
-                height: 60px;
-                padding: 8px;
+                width: 80px;
+                height: 80px;
+                padding: 0;
             }
 
             .menu-content {
@@ -1879,9 +1959,9 @@
             }
 
             .about-photo-container {
-                width: 150px;
-                height: 150px;
-                padding: 20px;
+                width: 180px;
+                height: 180px;
+                padding: 0;
             }
 
             .about-name {
@@ -1950,7 +2030,7 @@
     <div class="menu-content" :class="{ 'visible': showMenu }">
         <div class="menu-description">
             <div class="menu-profile-photo">
-                <img src="images/profile-photo.png" alt="Riley Goodman">
+                <img src="images/profile-photo.jpg" alt="Riley Goodman">
             </div>
             <div class="menu-text">
                 <h1>Software Engineer</h1>
@@ -2069,7 +2149,6 @@
                 <div class="project-header">
                     <div class="project-back-arrow" @click="closeProject()">←</div>
                     <div class="project-title" x-text="selectedProject?.title || ''"></div>
-                    <div class="project-forward-arrow">→</div>
                 </div>
                 
                 <div class="project-content">
@@ -2127,7 +2206,7 @@
                 <!-- Profile Section -->
                 <div class="profile-section">
                     <div class="profile-photo">
-                        <img src="./images/profile-photo.png" alt="Riley G Dev Profile Photo">
+                        <img src="./images/profile-photo.jpg" alt="Riley G Dev Profile Photo">
                     </div>
                     <div class="profile-info">
                         <h2>Riley In 3 sentences</h2>
@@ -2289,7 +2368,7 @@
             <div class="about-content">
                 <div class="about-profile-section">
                     <div class="about-photo-container">
-                        <img src="images/profile-photo.png" alt="Riley Goodman" class="about-profile-photo">
+                        <img src="images/profile-photo.jpg" alt="Riley Goodman" class="about-profile-photo">
                     </div>
                     <h2 class="about-name">Riley Goodman</h2>
                     <p class="about-role">Software Engineer, PHP/Laravel specialist</p>
@@ -2330,7 +2409,37 @@
                     <p class="contact-role">Software Engineer, PHP/Laravel specialist</p>
                 </div>
                 
-                <form class="contact-form" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+                <!-- Contact Mode Toggle Buttons -->
+                <div class="contact-mode-toggle">
+                    <button class="contact-mode-button" :class="{ 'active': contactMode === 'info' }" @click="setContactMode('info')">
+                        Show contact info
+                    </button>
+                    <button class="contact-mode-button" :class="{ 'active': contactMode === 'form' }" @click="setContactMode('form')">
+                        Drop me a line
+                    </button>
+                </div>
+                
+                <!-- Contact Info Display -->
+                <div x-show="contactMode === 'info'" x-transition class="contact-info-display">
+                    <div class="contact-info-item">
+                        <strong>Name:</strong> Riley Goodman
+                    </div>
+                    <div class="contact-info-item">
+                        <strong>Email:</strong> hello@rileyg.dev
+                    </div>
+                    <div class="contact-info-item">
+                        <strong>Phone:</strong> (720) 291-0714
+                    </div>
+                    <div class="contact-info-item">
+                        <strong>LinkedIn:</strong> linkedin.com/in/rileygweb
+                    </div>
+                    <div class="contact-info-item">
+                        <strong>Location:</strong> Anthem, AZ - Open to remote / Hybrid / On-site
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <form x-show="contactMode === 'form'" x-transition class="contact-form" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
                     <!-- Hidden field for Netlify bot protection -->
                     <input type="hidden" name="form-name" value="contact" />
                     <div style="display: none;">
