@@ -50,6 +50,56 @@
             position: relative;
         }
 
+        .letter-box {
+            width: 200px;
+            height: 200px;
+            border: 2px solid #000000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 96px;
+            font-weight: normal;
+            color: #000000;
+            background-color: #ffffff;
+            box-shadow: 4px 4px 0px #000000;
+            cursor: pointer;
+            line-height: 0;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .letter-box:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 6px 6px 0px #000000;
+        }
+
+        .nav-letter-box {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #000000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: normal;
+            color: #000000;
+            background-color: #ffffff;
+            box-shadow: 2px 2px 0px #000000;
+            cursor: pointer;
+            line-height: 0;
+        }
+
+
+
+        /* Special styling for the nav logo to remove borders between boxes */
+        .nav-letter-box:first-child {
+            border-left: 2px solid #000000;
+        }
+        
+        .nav-letter-box:not(:first-child) {
+            border-left: none;
+        }
+
         /* Navigation Bar */
         .nav-bar {
             position: fixed;
@@ -2165,8 +2215,8 @@
                                     <template x-for="(item, index) in (selectedProject?.techStackItems || [])" :key="index">
                                         <div class="tech-stack-item">
                                             <div class="tech-stack-icon">
-                                                <img :src="item.image || ''" :alt="item.name" x-show="item.image" />
-                                                <span x-show="!item.image" x-text="item.icon"></span>
+                                                <img :src="item.icon" :alt="item.name" x-show="item.icon.includes('.svg')" />
+                                                <span x-show="!item.icon.includes('.svg')" x-text="item.icon"></span>
                                             </div>
                                             <div class="tech-stack-name" x-text="item.name"></div>
                                         </div>

@@ -48,14 +48,14 @@ window.portfolioData = {
             techStack: 'Expand tech stack',
             filterTags: ['Figma', 'Tailwind', 'Alpine', 'Livewire', 'Laravel', 'Github', 'MySQL', 'GCP'],
             techStackItems: [
-                { name: 'Figma', icon: '🎨' },
-                { name: 'Tailwind', icon: '💨' },
-                { name: 'Alpine', icon: '⛰️' },
-                { name: 'Livewire', icon: '⚡' },
-                { name: 'Laravel', icon: '🔺' },
-                { name: 'Github', icon: '🐙' },
-                { name: 'MySQL', icon: '🐬' },
-                { name: 'GCP', icon: '☁️' }
+                { name: 'Figma', icon: 'images/logos/figma.svg' },
+                { name: 'Tailwind', icon: 'images/logos/tailwind.svg' },
+                { name: 'Alpine', icon: 'images/logos/alpine.svg' },
+                { name: 'Livewire', icon: 'images/logos/livewire.svg' },
+                { name: 'Laravel', icon: 'images/logos/laravel.svg' },
+                { name: 'Github', icon: 'images/logos/github.svg' },
+                { name: 'MySQL', icon: 'images/logos/mysql.svg' },
+                { name: 'GCP', icon: 'images/logos/gcp.svg' }
             ],
             image: 'https://via.placeholder.com/332x186/f0f0f0/000000?text=Dashboard+Preview',
             description: `Firefly is an ad tech company. Ad tech comes with mountains of data. When the company hired me, they were drowning in spreadsheets. I was actually brought on to work on some Wordpress contracts, but when those fell through and the company was hit with layoffs, I survived and we changed course. I was put in charge of fixing the data situation.
@@ -71,13 +71,13 @@ The project was a huge success. Analyst's time to create reports dropped from 2 
             techStack: 'Expand tech stack',
             filterTags: ['Figma', 'Angular', 'Laravel', 'Github', 'Jira', 'MySQL', 'AWS'],
             techStackItems: [
-                { name: 'Figma', icon: '🎨' },
-                { name: 'Angular', icon: '🅰️' },
-                { name: 'Laravel', icon: '🔺' },
-                { name: 'Github', icon: '🐙' },
-                { name: 'Jira', icon: '📊' },
-                { name: 'MySQL', icon: '🐬' },
-                { name: 'AWS', icon: '☁️' }
+                { name: 'Figma', icon: 'images/logos/figma.svg' },
+                { name: 'Angular', icon: 'images/logos/angular.svg' },
+                { name: 'Laravel', icon: 'images/logos/laravel.svg' },
+                { name: 'Github', icon: 'images/logos/github.svg' },
+                { name: 'Jira', icon: 'images/logos/jira.svg' },
+                { name: 'MySQL', icon: 'images/logos/mysql.svg' },
+                { name: 'AWS', icon: 'images/logos/aws.svg' }
             ],
             image: 'https://via.placeholder.com/332x186/f0f0f0/000000?text=iClassPro+Platform',
             description: `iClassPro is class management software for children's activity centers. Families, students, classes, camps, parties, appointments, payments, ledgers, enrollments… it's a complex system. Very mature at around 17 years old, I came on as a mid-level Laravel dev working on whatever they needed from me.
@@ -91,13 +91,13 @@ Over time, they made it clear they intended to push me into a more senior role a
             techStack: 'Expand tech stack',
             filterTags: ['Figma', 'Statamic', 'Tailwind', 'Laravel', 'Github', 'MySQL', 'AWS'],
             techStackItems: [
-                { name: 'Figma', icon: '🎨' },
-                { name: 'Statamic', icon: '📄' },
-                { name: 'Tailwind', icon: '💨' },
-                { name: 'Laravel', icon: '🔺' },
-                { name: 'Github', icon: '🐙' },
-                { name: 'MySQL', icon: '🐬' },
-                { name: 'AWS', icon: '☁️' }
+                { name: 'Figma', icon: 'images/logos/figma.svg' },
+                { name: 'Statamic', icon: 'images/logos/statamic.svg' },
+                { name: 'Tailwind', icon: 'images/logos/tailwind.svg' },
+                { name: 'Laravel', icon: 'images/logos/laravel.svg' },
+                { name: 'Github', icon: 'images/logos/github.svg' },
+                { name: 'MySQL', icon: 'images/logos/mysql.svg' },
+                { name: 'AWS', icon: 'images/logos/aws.svg' }
             ],
             image: 'https://via.placeholder.com/332x186/f0f0f0/000000?text=Tesla+App',
             description: `www.NotaTeslaApp.com is a news website dedicated to everything Tesla. The man who ran the site was a Tesla owner himself, and he wasn't satisfied with any third-party apps out there, so somewhat ironically, he decided he wanted to create his own Tesla app.
@@ -113,15 +113,15 @@ We built out an extensive API in Laravel, and though he had never heard of Stata
             techStack: 'Expand tech stack',
             filterTags: ['Figma', 'Tailwind', 'Alpine', 'Livewire', 'Laravel', 'Forge', 'Github', 'MySQL', 'Digital Ocean'],
             techStackItems: [
-                { name: 'Figma', icon: '🎨' },
-                { name: 'Tailwind', icon: '💨' },
-                { name: 'Alpine', icon: '⛰️' },
-                { name: 'Livewire', icon: '⚡' },
-                { name: 'Laravel', icon: '🔺' },
-                { name: 'Laravel Forge', icon: '🔧' },
-                { name: 'Github', icon: '🐙' },
-                { name: 'MySQL', icon: '🐬' },
-                { name: 'Digital Ocean', icon: '🌊' }
+                { name: 'Figma', icon: 'images/logos/figma.svg' },
+                { name: 'Tailwind', icon: 'images/logos/tailwind.svg' },
+                { name: 'Alpine', icon: 'images/logos/alpine.svg' },
+                { name: 'Livewire', icon: 'images/logos/livewire.svg' },
+                { name: 'Laravel', icon: 'images/logos/laravel.svg' },
+                { name: 'Laravel Forge', icon: 'images/logos/forge.svg' },
+                { name: 'Github', icon: 'images/logos/github.svg' },
+                { name: 'MySQL', icon: 'images/logos/mysql.svg' },
+                { name: 'Digital Ocean', icon: 'images/logos/digitalocean.svg' }
             ],
             image: 'https://via.placeholder.com/332x186/f0f0f0/000000?text=Fun+Pianos+Planner',
             description: `A few years ago, I did a friend's website (www.simplepost.io), who referred me to his real estate agent (www.amymarquezrealty.com), who referred me to her former business partner (www.funpianos.com) who was in need of a programmer to help him with his core business software. As well as a website overhaul.
@@ -141,15 +141,15 @@ Our partnership has been my longest-running so far, at just over 2.5 years. I bu
             techStack: 'Expand tech stack',
             filterTags: ['Figma', 'Tailwind', 'React', 'Next.js', 'Laravel', 'Forge', 'Github', 'PGSQL', 'Digital Ocean'],
             techStackItems: [
-                { name: 'Figma', icon: '🎨' },
-                { name: 'Tailwind', icon: '💨' },
-                { name: 'React', icon: '⚛️' },
-                { name: 'Next.js', icon: '▲' },
-                { name: 'Laravel', icon: '🔺' },
-                { name: 'Forge', icon: '🔧' },
-                { name: 'Github', icon: '🐙' },
-                { name: 'PGSQL', icon: '🐘' },
-                { name: 'Digital Ocean', icon: '🌊' }
+                { name: 'Figma', icon: 'images/logos/figma.svg' },
+                { name: 'Tailwind', icon: 'images/logos/tailwind.svg' },
+                { name: 'React', icon: 'images/logos/react.svg' },
+                { name: 'Next.js', icon: 'images/logos/nextjs.svg' },
+                { name: 'Laravel', icon: 'images/logos/laravel.svg' },
+                { name: 'Forge', icon: 'images/logos/forge.svg' },
+                { name: 'Github', icon: 'images/logos/github.svg' },
+                { name: 'PGSQL', icon: 'images/logos/postgresql.svg' },
+                { name: 'Digital Ocean', icon: 'images/logos/digitalocean.svg' }
             ],
             image: 'https://via.placeholder.com/332x186/f0f0f0/000000?text=Skillboards',
             description: `As the infamous Man of too Many Hobbies, in 2020 stuck in quarantine, I decided to learn to beatbox. Because piano and speedcubing weren't enough. As I learned, I found myself drowning in beatbox sounds. Snares, kicks, bass, lip rolls, whistles, it was all too much to remember.
