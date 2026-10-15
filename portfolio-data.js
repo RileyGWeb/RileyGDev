@@ -126,40 +126,90 @@ It's built on Laravel with Sanctum, Redis and PostgreSQL on the backend, and Nex
                 { name: 'React', icon: 'images/logos/react.svg' },
                 { name: 'TypeScript', icon: 'images/logos/typescript.svg' },
                 { name: 'Tailwind', icon: 'images/logos/tailwind.svg' },
-                { name: 'PGSQL', icon: 'images/logos/postgresql.svg' },
-                { name: 'AWS Bedrock', icon: 'images/logos/aws.svg' },
+                { name: 'PGSQL + pgvector', icon: 'images/logos/postgresql.svg' },
+                { name: 'AWS (SQS, Bedrock)', icon: 'images/logos/aws.svg' },
+                { name: 'Anthropic Claude', icon: '🤖' },
+                { name: 'Stripe', icon: '💳' },
                 { name: 'Github', icon: 'images/logos/github.svg' }
             ],
-            image: 'https://via.placeholder.com/332x186/f0f0f0/000000?text=SuggestionBox',
-            liveUrl: 'https://youtubesuggestionbox.com',
-            githubUrl: 'https://github.com/RileyGWeb/suggestionbox',
-            description: `SuggestionBox is an AI-powered inbox for YouTube creators. It pulls in comments via the YouTube Data API, runs them through Amazon Bedrock to score and cluster video-idea suggestions, and surfaces the ones actually worth acting on - instead of a creator having to scroll through hundreds of comments looking for gold.
+            image: 'images/projects/suggestionbox.webp',
+            liveUrl: 'https://creatorsuggestionbox.com',
+            description: `SuggestionBox gives creators one branded link - a public, no-login page at /@handle - that they can drop in their bio and video descriptions, so every request their audience makes lands in one place.
 
-There's also a public, no-login submission page at /@handle so viewers can drop ideas directly.
+Creators can also connect their YouTube, Instagram and Facebook accounts (read-only - it never posts as you), and SuggestionBox finds the requests buried in the comments: messages are filtered for spam, classified by an LLM, embedded and clustered, so everyone asking for the same video shows up as one ranked request instead of a pile of separate comments.
 
-Built with Laravel 12 and PostgreSQL on the backend, Next.js 16 and React 19 on the frontend.`
+From there, creators can publish an optional public Idea Board where viewers vote, and move ideas from New to Considering to Planned to Made, so the people who asked find out when the video exists.
+
+Built with Laravel 12 and PostgreSQL (with pgvector) on the backend, SQS queues for the analysis pipeline, swappable AI providers (Anthropic, Amazon Bedrock, Voyage embeddings), and Stripe for billing. Next.js 16, React 19, TypeScript and Tailwind on the frontend.`
         },
         'pollsandforms': {
             slug: 'pollsandforms',
             title: 'PollsAndForms',
             company: 'Products',
             techStack: 'Expand tech stack',
-            filterTags: ['Laravel', 'Next.js', 'TypeScript', 'Tailwind', 'PGSQL', 'Redis', 'Github'],
+            filterTags: ['Laravel', 'Next.js', 'React', 'TypeScript', 'Tailwind', 'PGSQL', 'Redis', 'Github'],
             techStackItems: [
                 { name: 'Laravel', icon: 'images/logos/laravel.svg' },
                 { name: 'Next.js', icon: 'images/logos/nextjs.svg' },
+                { name: 'React', icon: 'images/logos/react.svg' },
                 { name: 'TypeScript', icon: 'images/logos/typescript.svg' },
                 { name: 'Tailwind', icon: 'images/logos/tailwind.svg' },
                 { name: 'PGSQL', icon: 'images/logos/postgresql.svg' },
                 { name: 'Redis', icon: 'images/logos/redis.svg' },
                 { name: 'Github', icon: 'images/logos/github.svg' }
             ],
-            image: 'https://via.placeholder.com/332x186/f0f0f0/000000?text=PollsAndForms',
+            image: 'images/projects/pollsandforms.webp',
             liveUrl: 'https://pollsandforms.com',
-            githubUrl: 'https://github.com/RileyGWeb/PollsAndForms.com',
             description: `PollsAndForms is a fast poll and form builder with private sharing links and a public opinion feed. I built it because most poll tools online are either bloated with features nobody needs or paywalled for basics like custom branding.
 
 Laravel 12 and PostgreSQL on the backend, Next.js 16 on the frontend, with Google OAuth for sign-in.`
+        },
+        'mynextsteps': {
+            slug: 'mynextsteps',
+            title: 'My Next Steps',
+            company: 'Products',
+            techStack: 'Expand tech stack',
+            filterTags: ['Laravel', 'Next.js', 'React', 'TypeScript', 'Tailwind', 'Github'],
+            techStackItems: [
+                { name: 'Laravel', icon: 'images/logos/laravel.svg' },
+                { name: 'Next.js', icon: 'images/logos/nextjs.svg' },
+                { name: 'React', icon: 'images/logos/react.svg' },
+                { name: 'TypeScript', icon: 'images/logos/typescript.svg' },
+                { name: 'Tailwind', icon: 'images/logos/tailwind.svg' },
+                { name: 'Github', icon: 'images/logos/github.svg' }
+            ],
+            image: 'images/projects/mynextsteps.webp',
+            liveUrl: 'https://mynextsteps.org',
+            description: `My Next Steps is a multi-tenant SaaS for churches. Each church gets its own subdomain where members take a guided assessment of their current spiritual rhythms and get a personalized plan of next steps - resources, classes and groups matched to where they are today - then track their growth over time.
+
+Church staff run their assessment and invite their team from a staff panel, and new churches are approved from a platform admin panel.
+
+A Laravel 12 API on the backend, and a Next.js 16 / React 19 / TypeScript / Tailwind app for the marketing site and the admin, staff and member panels.`
+        },
+        'unslop': {
+            slug: 'unslop-your-flyer',
+            title: 'Unslop Your Flyer',
+            company: 'Products',
+            techStack: 'Expand tech stack',
+            filterTags: ['Laravel', 'Next.js', 'React', 'TypeScript', 'Tailwind', 'MySQL', 'Github'],
+            techStackItems: [
+                { name: 'Laravel', icon: 'images/logos/laravel.svg' },
+                { name: 'Next.js', icon: 'images/logos/nextjs.svg' },
+                { name: 'React', icon: 'images/logos/react.svg' },
+                { name: 'TypeScript', icon: 'images/logos/typescript.svg' },
+                { name: 'Tailwind', icon: 'images/logos/tailwind.svg' },
+                { name: 'MariaDB', icon: 'images/logos/mysql.svg' },
+                { name: 'Anthropic Claude', icon: '🤖' },
+                { name: 'Stripe', icon: '💳' },
+                { name: 'Github', icon: 'images/logos/github.svg' }
+            ],
+            image: 'images/projects/unslop-your-flyer.webp',
+            liveUrl: 'https://unslopyourflyer.com',
+            description: `Unslop Your Flyer turns an over-decorated, obviously-AI flyer into one people will actually read - without changing a single fact. Upload your current flyer (or just describe your event or business), confirm the facts it read off, pick a theme direction and a layout, and it rebuilds the design as real, editable HTML/CSS instead of a generated image.
+
+From there you can refine it by hand or by chat, resize it for Stories, and export it. There's a free critique-only Analyze mode and a no-account demo, and paid generations use credits that are only charged when a design actually lands.
+
+A Laravel 13 API handles every Claude call, Next.js 16 with TypeScript and Tailwind powers the editor and export renderer, MariaDB in production, and Stripe for credit packs.`
         },
         'aicustomizer': {
             slug: 'ai-customizer',
@@ -193,7 +243,7 @@ It currently supports 18 sites and is still pre-launch - I haven't submitted it 
                 { name: 'MySQL', icon: 'images/logos/mysql.svg' },
                 { name: 'Github', icon: 'images/logos/github.svg' }
             ],
-            image: 'https://via.placeholder.com/332x186/f0f0f0/000000?text=To-do+Ninja',
+            image: 'images/projects/to-do-ninja.webp',
             liveUrl: 'https://to-do.ninja',
             githubUrl: 'https://github.com/RileyGWeb/to-do.ninja',
             description: `To-do Ninja is exactly what it sounds like: a to-do list app. Sometimes the best way to learn a new stack is to build something dead simple with it, so this one's my sandbox for trying out patterns before I bring them into bigger projects.
@@ -224,20 +274,46 @@ Laravel, Blade and Vite on the web side, wrapped for mobile with Capacitor.`
             title: "Don't Atrophy",
             company: 'Tools & Experiments',
             techStack: 'Expand tech stack',
-            filterTags: ['Laravel', 'Next.js', 'PGSQL', 'Github'],
+            filterTags: ['Laravel', 'Next.js', 'React', 'TypeScript', 'PGSQL', 'Github'],
             techStackItems: [
                 { name: 'Laravel', icon: 'images/logos/laravel.svg' },
                 { name: 'Next.js', icon: 'images/logos/nextjs.svg' },
+                { name: 'React', icon: 'images/logos/react.svg' },
+                { name: 'TypeScript', icon: 'images/logos/typescript.svg' },
                 { name: 'PGSQL', icon: 'images/logos/postgresql.svg' },
                 { name: 'Github', icon: 'images/logos/github.svg' },
-                { name: 'Google Calendar', icon: '📅' }
+                { name: 'Google Sign-In', icon: '🔑' }
             ],
-            image: 'https://via.placeholder.com/332x186/f0f0f0/000000?text=Dont+Atrophy',
+            image: 'images/projects/dont-atrophy.webp',
             liveUrl: 'https://dont-atrophy.com',
-            githubUrl: 'https://github.com/RileyGWeb/dont-atrophy',
-            description: `Don't Atrophy is an ambient wellness companion that sits open on your desktop, watches the clock, and gently interrupts your workday with movement breaks - stretches, walks, breathing, hydration - on a schedule you define. It supports a guest mode and a signed-in mode with streaks, history, and Google Calendar integration.
+            description: `Don't Atrophy is an ambient wellness companion that sits open on your desktop, watches the clock, and gently interrupts your workday with movement breaks - stretches, walks, breathing, hydration - on a schedule you define: your work hours, timezone, active days and reminder messages.
 
-Laravel and PostgreSQL on the backend, Next.js on the frontend.`
+It works fully in guest mode with no account. Signing in (Google sign-in supported) adds streaks, progress history, groups and a leaderboard, and syncs your settings across devices.
+
+Laravel 13 and PostgreSQL on the backend, Next.js 16, React 19 and TypeScript on the frontend.`
+        },
+        'chorechart': {
+            slug: 'chorechart',
+            title: 'ChoreChart.io',
+            company: 'Tools & Experiments',
+            techStack: 'Expand tech stack',
+            filterTags: ['Laravel', 'Next.js', 'React', 'TypeScript', 'Tailwind', 'PGSQL', 'Github'],
+            techStackItems: [
+                { name: 'Laravel', icon: 'images/logos/laravel.svg' },
+                { name: 'Next.js', icon: 'images/logos/nextjs.svg' },
+                { name: 'React', icon: 'images/logos/react.svg' },
+                { name: 'TypeScript', icon: 'images/logos/typescript.svg' },
+                { name: 'Tailwind', icon: 'images/logos/tailwind.svg' },
+                { name: 'PGSQL', icon: 'images/logos/postgresql.svg' },
+                { name: 'Github', icon: 'images/logos/github.svg' }
+            ],
+            image: 'images/projects/chorechart.webp',
+            liveUrl: 'https://chorechart.io',
+            description: `ChoreChart is a free family chore chart. Each household gets a shared board where chores are assigned to a specific person or shared by everyone, scheduled anywhere from daily to yearly, and checked off by period - so everyone can see what's done, what's due, and who owns it, without the nagging.
+
+It's one of my free tools on rileysfreetools.com: no subscription, no paywall.
+
+Laravel 12 with Sanctum and PostgreSQL on the backend, Next.js 16, React 19, TypeScript and Tailwind on the frontend.`
         }
     },
     init() {

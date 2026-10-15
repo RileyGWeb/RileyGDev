@@ -1926,7 +1926,7 @@
                 </div>
 
                 <!-- Products -->
-                <div class="work-section" x-show="shouldShowProject('skillboards') || shouldShowProject('suggestionbox') || shouldShowProject('pollsandforms')" x-transition>
+                <div class="work-section" x-show="shouldShowProject('skillboards') || shouldShowProject('suggestionbox') || shouldShowProject('pollsandforms') || shouldShowProject('mynextsteps') || shouldShowProject('unslop')" x-transition>
                     <div class="section-title">Products</div>
                     <div class="work-items">
                         <div class="work-item" @click="openProject('skillboards')" x-show="shouldShowProject('skillboards')" x-transition>
@@ -1941,11 +1941,19 @@
                             <div class="work-item-title">PollsAndForms</div>
                             <div class="work-item-icon">→</div>
                         </div>
+                        <div class="work-item" @click="openProject('mynextsteps')" x-show="shouldShowProject('mynextsteps')" x-transition>
+                            <div class="work-item-title">My Next Steps</div>
+                            <div class="work-item-icon">→</div>
+                        </div>
+                        <div class="work-item" @click="openProject('unslop')" x-show="shouldShowProject('unslop')" x-transition>
+                            <div class="work-item-title">Unslop Your Flyer</div>
+                            <div class="work-item-icon">→</div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Tools & Experiments -->
-                <div class="work-section" x-show="shouldShowProject('aicustomizer') || shouldShowProject('todoninja') || shouldShowProject('memorizeyourscripture') || shouldShowProject('dontatrophy')" x-transition>
+                <div class="work-section" x-show="shouldShowProject('aicustomizer') || shouldShowProject('todoninja') || shouldShowProject('memorizeyourscripture') || shouldShowProject('dontatrophy') || shouldShowProject('chorechart')" x-transition>
                     <div class="section-title">Tools & Experiments</div>
                     <div class="work-items">
                         <div class="work-item" @click="openProject('aicustomizer')" x-show="shouldShowProject('aicustomizer')" x-transition>
@@ -1962,6 +1970,10 @@
                         </div>
                         <div class="work-item" @click="openProject('dontatrophy')" x-show="shouldShowProject('dontatrophy')" x-transition>
                             <div class="work-item-title">Don't Atrophy</div>
+                            <div class="work-item-icon">→</div>
+                        </div>
+                        <div class="work-item" @click="openProject('chorechart')" x-show="shouldShowProject('chorechart')" x-transition>
+                            <div class="work-item-title">ChoreChart.io</div>
                             <div class="work-item-icon">→</div>
                         </div>
                     </div>
