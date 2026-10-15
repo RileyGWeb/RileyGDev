@@ -1,5 +1,7 @@
 // Portfolio data for Alpine.js
 window.portfolioData = {
+    birthDate: new Date(1997, 9, 14), // Oct 14, 1997
+    age: 0,
     letters: [
         { letter: 'R', delay: '200ms' },
         { letter: 'I', delay: '400ms' },
@@ -27,7 +29,7 @@ window.portfolioData = {
     selectedProject: null,
     expandedTechStack: false,
     activeFilter: 'all',
-    filters: ['Figma', 'Laravel', 'React', 'Angular', 'Tailwind', 'Alpine', 'Livewire', 'Next.js', 'Statamic', 'Github', 'MySQL', 'PGSQL', 'AWS', 'GCP', 'Digital Ocean', 'Jira', 'Forge'],
+    filters: ['IT Management', 'Laravel', 'Next.js', 'React', 'TypeScript', 'Tailwind', 'Alpine', 'Livewire', 'Github', 'MySQL', 'PGSQL', 'Redis', 'AWS', 'Digital Ocean', 'Forge', 'Figma'],
     dragState: {
         isDragging: false,
         startX: 0,
@@ -35,81 +37,31 @@ window.portfolioData = {
     },
     showFilterFade: false,
     currentRoute: '',
-    showRecruiterPage: false,
     showContactInfo: false,
     showAboutPage: false,
     showContactPage: false,
     contactMode: 'form', // 'form' or 'info'
     projects: {
-        'firefly': {
-            slug: 'analytics-dashboard',
-            title: 'Firefly - Analytics Dashboard',
-            company: 'As an Employee',
+        'proedge': {
+            slug: 'proedge',
+            title: 'ProEdge (ProHousing)',
+            company: 'Day Job & Freelance',
             techStack: 'Expand tech stack',
-            filterTags: ['Figma', 'Tailwind', 'Alpine', 'Livewire', 'Laravel', 'Github', 'MySQL', 'GCP'],
+            filterTags: ['IT Management'],
             techStackItems: [
-                { name: 'Figma', icon: 'images/logos/figma.svg' },
-                { name: 'Tailwind', icon: 'images/logos/tailwind.svg' },
-                { name: 'Alpine', icon: 'images/logos/alpine.svg' },
-                { name: 'Livewire', icon: 'images/logos/livewire.svg' },
-                { name: 'Laravel', icon: 'images/logos/laravel.svg' },
-                { name: 'Github', icon: 'images/logos/github.svg' },
-                { name: 'MySQL', icon: 'images/logos/mysql.svg' },
-                { name: 'GCP', icon: 'images/logos/gcp.svg' }
+                { name: 'Full-Stack Development', icon: '💻' },
+                { name: 'Systems Administration', icon: '🖥️' },
+                { name: 'Team Leadership', icon: '🧑‍💼' }
             ],
-            image: 'https://via.placeholder.com/332x186/f0f0f0/000000?text=Dashboard+Preview',
-            description: `Firefly is an ad tech company. Ad tech comes with mountains of data. When the company hired me, they were drowning in spreadsheets. I was actually brought on to work on some Wordpress contracts, but when those fell through and the company was hit with layoffs, I survived and we changed course. I was put in charge of fixing the data situation.
+            image: 'https://via.placeholder.com/332x186/f0f0f0/000000?text=ProEdge',
+            description: `ProEdge is the internal platform I build and maintain as IT Manager at ProHousing. Most of my day-to-day is still software development - shipping features, fixing what's broken, and keeping the systems the rest of the company relies on running smoothly.
 
-Myself and the resident data wizard devised a Laravel app built with the TALL stack to solve the problem. I handled the Figma mockups, app development and server configuration (GCP). He handled database design and wiring up all the APIs to serve our database and keep it up to date.
-
-The project was a huge success. Analyst's time to create reports dropped from 2 - 6 hours, down to 10 - 45 minutes. Even after layoffs, they gave me a raise to keep me around working on it. Eventually I was poached by Citizens Bank, but still they kept me on at 10h/wk on a contract basis to get the project finished.`
-        },
-        'iclassipro': {
-            slug: 'iclassipro-enterprise',
-            title: 'iClassPro - Enterprise Software',
-            company: 'As an Employee',
-            techStack: 'Expand tech stack',
-            filterTags: ['Figma', 'Angular', 'Laravel', 'Github', 'Jira', 'MySQL', 'AWS'],
-            techStackItems: [
-                { name: 'Figma', icon: 'images/logos/figma.svg' },
-                { name: 'Angular', icon: 'images/logos/angular.svg' },
-                { name: 'Laravel', icon: 'images/logos/laravel.svg' },
-                { name: 'Github', icon: 'images/logos/github.svg' },
-                { name: 'Jira', icon: 'images/logos/jira.svg' },
-                { name: 'MySQL', icon: 'images/logos/mysql.svg' },
-                { name: 'AWS', icon: 'images/logos/aws.svg' }
-            ],
-            image: 'https://via.placeholder.com/332x186/f0f0f0/000000?text=iClassPro+Platform',
-            description: `iClassPro is class management software for children's activity centers. Families, students, classes, camps, parties, appointments, payments, ledgers, enrollments… it's a complex system. Very mature at around 17 years old, I came on as a mid-level Laravel dev working on whatever they needed from me.
-
-Over time, they made it clear they intended to push me into a more senior role at the company. They did a wonderful job helping me refine my skills, grow in my knowledge and stay on the cutting edge of the tech we used. When the AI boom happened, iClass was great about adopting it and teaching us to use it responsibly to greatly increase our productivity.`
-        },
-        'notatesla': {
-            slug: 'not-a-tesla-app',
-            title: 'Not a Tesla App',
-            company: 'As a Freelancer',
-            techStack: 'Expand tech stack',
-            filterTags: ['Figma', 'Statamic', 'Tailwind', 'Laravel', 'Github', 'MySQL', 'AWS'],
-            techStackItems: [
-                { name: 'Figma', icon: 'images/logos/figma.svg' },
-                { name: 'Statamic', icon: 'images/logos/statamic.svg' },
-                { name: 'Tailwind', icon: 'images/logos/tailwind.svg' },
-                { name: 'Laravel', icon: 'images/logos/laravel.svg' },
-                { name: 'Github', icon: 'images/logos/github.svg' },
-                { name: 'MySQL', icon: 'images/logos/mysql.svg' },
-                { name: 'AWS', icon: 'images/logos/aws.svg' }
-            ],
-            image: 'https://via.placeholder.com/332x186/f0f0f0/000000?text=Tesla+App',
-            description: `www.NotaTeslaApp.com is a news website dedicated to everything Tesla. The man who ran the site was a Tesla owner himself, and he wasn't satisfied with any third-party apps out there, so somewhat ironically, he decided he wanted to create his own Tesla app.
-
-He envisioned an all-in-one platform Tesla owners could use to control and manage their vehicle from. From vehicle commands to historical data on trips, energy usage and interior climate, the app had it all. He also wanted to overhaul his oldschool hand-built PHP news site, so I helped him tackle that too.
-
-We built out an extensive API in Laravel, and though he had never heard of Statamic, I convinced him to use it for the news platform overhaul. It worked out brilliantly, and he's still using it to this day. Unfortunately I parted ways with him when my wife and I had our baby, so I never got to see the app come to fruition, but I always think about what could have been.`
+It's not public, so there's no live link or repo to browse here, but it's where the bulk of my working hours go.`
         },
         'funpianos': {
             slug: 'fun-pianos-planner',
             title: 'The Fun Pianos Planner',
-            company: 'As a Freelancer',
+            company: 'Day Job & Freelance',
             techStack: 'Expand tech stack',
             filterTags: ['Figma', 'Tailwind', 'Alpine', 'Livewire', 'Laravel', 'Forge', 'Github', 'MySQL', 'Digital Ocean'],
             techStackItems: [
@@ -132,72 +84,178 @@ Fun! Pianos is a traveling dueling pianos show business. Long story short, the o
 
 Luckily, I was already well-versed in PHP, but I took one look at his existing platform and knew right away FP needed an overhaul. I hosted them on a brand new domain (they used to run on duelingpiano.com), and started from scratch with Laravel and Filament.
 
-Our partnership has been my longest-running so far, at just over 2.5 years. I build everything the business needs to run, and I handle it all from front to back. Figma to Laravel to Digital Ocean.`
+Our partnership has been my longest-running so far, at over 2.5 years and counting. I build everything the business needs to run, and I handle it all from front to back. Figma to Laravel to Digital Ocean.`
         },
         'skillboards': {
             slug: 'skillboards',
             title: 'Skillboards',
-            company: 'As a Side-Hustler',
+            company: 'Products',
             techStack: 'Expand tech stack',
-            filterTags: ['Figma', 'Tailwind', 'React', 'Next.js', 'Laravel', 'Forge', 'Github', 'PGSQL', 'Digital Ocean'],
+            filterTags: ['Figma', 'Tailwind', 'React', 'Next.js', 'Laravel', 'Github', 'PGSQL', 'Redis', 'AWS'],
             techStackItems: [
                 { name: 'Figma', icon: 'images/logos/figma.svg' },
                 { name: 'Tailwind', icon: 'images/logos/tailwind.svg' },
                 { name: 'React', icon: 'images/logos/react.svg' },
                 { name: 'Next.js', icon: 'images/logos/nextjs.svg' },
                 { name: 'Laravel', icon: 'images/logos/laravel.svg' },
-                { name: 'Forge', icon: 'images/logos/forge.svg' },
                 { name: 'Github', icon: 'images/logos/github.svg' },
                 { name: 'PGSQL', icon: 'images/logos/postgresql.svg' },
-                { name: 'Digital Ocean', icon: 'images/logos/digitalocean.svg' }
+                { name: 'Redis', icon: 'images/logos/redis.svg' },
+                { name: 'AWS', icon: 'images/logos/aws.svg' }
             ],
             image: 'https://via.placeholder.com/332x186/f0f0f0/000000?text=Skillboards',
-            description: `As the infamous Man of too Many Hobbies, in 2020 stuck in quarantine, I decided to learn to beatbox. Because piano and speedcubing weren't enough. As I learned, I found myself drowning in beatbox sounds. Snares, kicks, bass, lip rolls, whistles, it was all too much to remember.
+            liveUrl: 'https://skillboards.app',
+            githubUrl: 'https://github.com/RileyG-Dev/Skillboards',
+            description: `As the infamous Man of too Many Hobbies, back in 2020 stuck in quarantine, I decided to learn to beatbox. As I learned, I found myself drowning in beatbox sounds - snares, kicks, bass, lip rolls, whistles, it was all too much to remember.
 
-I envisioned an application with two simple columns as an interface - on the left, "Unlearned", and on the right, "Learned". The left column hosted a grid of "cards", each representing a beatbox sound. As I learned new sounds, I'd move them over to the right column.
+I envisioned an app with two simple columns - on the left, "Unlearned," and on the right, "Learned." The left column hosted a grid of cards, each representing a beatbox sound. As I learned new sounds, I'd move them over to the right column.
 
-Fast forward to 2025. My software engineering skills have improved even more, and AI agents are growing even faster. I take another stab. 3 weeks go by, and I have the skillboards I always dreamed of on my local machine.
+That idea grew into what Skillboards is today: a community platform built around "Skillboards" - like subreddits for specific skills - each with its own kanban-style progress tracker, learning content, discussion forums, and a personalized recommendation feed.
 
-As of Wednesday, August 6th, '25, that's where Skillboards sits. I recently lost my job to layoffs, so this again has taken a back seat to applying and networking. I want to get it up and running eventually though. I really like the idea.`
+It's built on Laravel with Sanctum, Redis and PostgreSQL on the backend, and Next.js/React with Tailwind on the frontend, deployed on AWS. It's my most ambitious side project, and the one I'm proudest of.`
+        },
+        'suggestionbox': {
+            slug: 'suggestionbox',
+            title: 'SuggestionBox',
+            company: 'Products',
+            techStack: 'Expand tech stack',
+            filterTags: ['Laravel', 'Next.js', 'React', 'TypeScript', 'Tailwind', 'PGSQL', 'AWS', 'Github'],
+            techStackItems: [
+                { name: 'Laravel', icon: 'images/logos/laravel.svg' },
+                { name: 'Next.js', icon: 'images/logos/nextjs.svg' },
+                { name: 'React', icon: 'images/logos/react.svg' },
+                { name: 'TypeScript', icon: 'images/logos/typescript.svg' },
+                { name: 'Tailwind', icon: 'images/logos/tailwind.svg' },
+                { name: 'PGSQL', icon: 'images/logos/postgresql.svg' },
+                { name: 'AWS Bedrock', icon: 'images/logos/aws.svg' },
+                { name: 'Github', icon: 'images/logos/github.svg' }
+            ],
+            image: 'https://via.placeholder.com/332x186/f0f0f0/000000?text=SuggestionBox',
+            liveUrl: 'https://youtubesuggestionbox.com',
+            githubUrl: 'https://github.com/RileyGWeb/suggestionbox',
+            description: `SuggestionBox is an AI-powered inbox for YouTube creators. It pulls in comments via the YouTube Data API, runs them through Amazon Bedrock to score and cluster video-idea suggestions, and surfaces the ones actually worth acting on - instead of a creator having to scroll through hundreds of comments looking for gold.
+
+There's also a public, no-login submission page at /@handle so viewers can drop ideas directly.
+
+Built with Laravel 12 and PostgreSQL on the backend, Next.js 16 and React 19 on the frontend.`
+        },
+        'pollsandforms': {
+            slug: 'pollsandforms',
+            title: 'PollsAndForms',
+            company: 'Products',
+            techStack: 'Expand tech stack',
+            filterTags: ['Laravel', 'Next.js', 'TypeScript', 'Tailwind', 'PGSQL', 'Redis', 'Github'],
+            techStackItems: [
+                { name: 'Laravel', icon: 'images/logos/laravel.svg' },
+                { name: 'Next.js', icon: 'images/logos/nextjs.svg' },
+                { name: 'TypeScript', icon: 'images/logos/typescript.svg' },
+                { name: 'Tailwind', icon: 'images/logos/tailwind.svg' },
+                { name: 'PGSQL', icon: 'images/logos/postgresql.svg' },
+                { name: 'Redis', icon: 'images/logos/redis.svg' },
+                { name: 'Github', icon: 'images/logos/github.svg' }
+            ],
+            image: 'https://via.placeholder.com/332x186/f0f0f0/000000?text=PollsAndForms',
+            liveUrl: 'https://pollsandforms.com',
+            githubUrl: 'https://github.com/RileyGWeb/PollsAndForms.com',
+            description: `PollsAndForms is a fast poll and form builder with private sharing links and a public opinion feed. I built it because most poll tools online are either bloated with features nobody needs or paywalled for basics like custom branding.
+
+Laravel 12 and PostgreSQL on the backend, Next.js 16 on the frontend, with Google OAuth for sign-in.`
+        },
+        'aicustomizer': {
+            slug: 'ai-customizer',
+            title: 'AI Customizer',
+            company: 'Tools & Experiments',
+            techStack: 'Expand tech stack',
+            filterTags: ['React', 'TypeScript', 'Tailwind'],
+            techStackItems: [
+                { name: 'React', icon: 'images/logos/react.svg' },
+                { name: 'TypeScript', icon: 'images/logos/typescript.svg' },
+                { name: 'Tailwind', icon: 'images/logos/tailwind.svg' },
+                { name: 'Chrome Extension', icon: '🧩' }
+            ],
+            image: 'https://via.placeholder.com/332x186/f0f0f0/000000?text=AI+Customizer',
+            description: `AI Customizer is a Chrome extension that hides the AI features companies keep injecting into their products whether you asked for them or not - Google's AI Overviews, Gmail's Smart Compose UI, random "Ask AI" buttons and sidebars. It works entirely on-device: no accounts, no backend, no data collection.
+
+It currently supports 18 sites and is still pre-launch - I haven't submitted it to the Chrome Web Store yet.`
         },
         'todoninja': {
             slug: 'todo-ninja',
             title: 'To-do Ninja',
-            company: 'Just Messin\' Around',
+            company: 'Tools & Experiments',
             techStack: 'Expand tech stack',
-            filterTags: ['Coming Soon'],
+            filterTags: ['Laravel', 'Next.js', 'React', 'TypeScript', 'Tailwind', 'MySQL', 'Github'],
             techStackItems: [
-                { name: 'Coming Soon', icon: '🚧' }
+                { name: 'Laravel', icon: 'images/logos/laravel.svg' },
+                { name: 'Next.js', icon: 'images/logos/nextjs.svg' },
+                { name: 'React', icon: 'images/logos/react.svg' },
+                { name: 'TypeScript', icon: 'images/logos/typescript.svg' },
+                { name: 'Tailwind', icon: 'images/logos/tailwind.svg' },
+                { name: 'MySQL', icon: 'images/logos/mysql.svg' },
+                { name: 'Github', icon: 'images/logos/github.svg' }
             ],
-            image: 'https://via.placeholder.com/332x186/f0f0f0/000000?text=Coming+Soon',
-            description: `Coming Soon - This project is still in development.`
+            image: 'https://via.placeholder.com/332x186/f0f0f0/000000?text=To-do+Ninja',
+            liveUrl: 'https://to-do.ninja',
+            githubUrl: 'https://github.com/RileyGWeb/to-do.ninja',
+            description: `To-do Ninja is exactly what it sounds like: a to-do list app. Sometimes the best way to learn a new stack is to build something dead simple with it, so this one's my sandbox for trying out patterns before I bring them into bigger projects.
+
+Laravel on the backend, Next.js and Tailwind on the frontend.`
         },
-        'biozone': {
-            slug: 'biozone',
-            title: 'Biozone',
-            company: 'Just Messin\' Around',
+        'memorizeyourscripture': {
+            slug: 'memorize-your-scripture',
+            title: 'Memorize Your Scripture',
+            company: 'Tools & Experiments',
             techStack: 'Expand tech stack',
-            filterTags: ['Coming Soon'],
+            filterTags: ['Laravel', 'MySQL', 'Github'],
             techStackItems: [
-                { name: 'Coming Soon', icon: '🚧' }
+                { name: 'Laravel', icon: 'images/logos/laravel.svg' },
+                { name: 'MySQL', icon: 'images/logos/mysql.svg' },
+                { name: 'Github', icon: 'images/logos/github.svg' },
+                { name: 'Capacitor (iOS)', icon: '📱' }
             ],
-            image: 'https://via.placeholder.com/332x186/f0f0f0/000000?text=Coming+Soon',
-            description: `Coming Soon - This project is still in development.`
+            image: 'https://via.placeholder.com/332x186/f0f0f0/000000?text=Memorize+Your+Scripture',
+            liveUrl: 'https://memorizeyourscripture.org',
+            githubUrl: 'https://github.com/RileyGWeb/memorize-your-scripture',
+            description: `Memorize Your Scripture helps you actually memorize scripture instead of just rereading it and hoping it sticks. It's a Laravel app that also ships as an iOS app via Capacitor, currently in TestFlight beta.
+
+Laravel, Blade and Vite on the web side, wrapped for mobile with Capacitor.`
+        },
+        'dontatrophy': {
+            slug: 'dont-atrophy',
+            title: "Don't Atrophy",
+            company: 'Tools & Experiments',
+            techStack: 'Expand tech stack',
+            filterTags: ['Laravel', 'Next.js', 'PGSQL', 'Github'],
+            techStackItems: [
+                { name: 'Laravel', icon: 'images/logos/laravel.svg' },
+                { name: 'Next.js', icon: 'images/logos/nextjs.svg' },
+                { name: 'PGSQL', icon: 'images/logos/postgresql.svg' },
+                { name: 'Github', icon: 'images/logos/github.svg' },
+                { name: 'Google Calendar', icon: '📅' }
+            ],
+            image: 'https://via.placeholder.com/332x186/f0f0f0/000000?text=Dont+Atrophy',
+            liveUrl: 'https://dont-atrophy.com',
+            githubUrl: 'https://github.com/RileyGWeb/dont-atrophy',
+            description: `Don't Atrophy is an ambient wellness companion that sits open on your desktop, watches the clock, and gently interrupts your workday with movement breaks - stretches, walks, breathing, hydration - on a schedule you define. It supports a guest mode and a signed-in mode with streaks, history, and Google Calendar integration.
+
+Laravel and PostgreSQL on the backend, Next.js on the frontend.`
         }
     },
     init() {
         // Reset scroll position to top on page load
         window.scrollTo(0, 0);
-        
+
+        // Compute current age from birth date, so it never goes stale
+        this.age = this.calculateAge(this.birthDate);
+
         // Initialize routing
         this.handleRoute();
         window.addEventListener('hashchange', () => this.handleRoute());
-        
+
         // Start the letter animations after a brief delay
         setTimeout(() => {
             this.mounted = true;
         }, 300);
-        
+
         // Scroll and wheel detection - available immediately
         const handleScroll = () => {
             if (!this.hasScrolled && (window.scrollY > 0)) {
@@ -205,27 +263,35 @@ As of Wednesday, August 6th, '25, that's where Skillboards sits. I recently lost
                 this.showMenu = true;
             }
         };
-        
+
         const handleWheel = (e) => {
             if (!this.hasScrolled && e.deltaY > 0) {
                 this.hasScrolled = true;
                 this.showMenu = true;
             }
         };
-        
+
         window.addEventListener('scroll', handleScroll);
         window.addEventListener('wheel', handleWheel);
+    },
+    calculateAge(birthDate) {
+        const today = new Date();
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDiff = today.getMonth() - birthDate.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
     },
     handleRoute() {
         const hash = window.location.hash.substring(1);
         this.currentRoute = hash;
-        
+
         // Reset all page states
         this.showAboutPage = false;
         this.showContactPage = false;
         this.showMyWork = false;
-        this.showRecruiterPage = false;
-        
+
         switch(hash) {
             case 'about':
                 this.showAboutPage = true;
@@ -235,9 +301,6 @@ As of Wednesday, August 6th, '25, that's where Skillboards sits. I recently lost
                 break;
             case 'work':
                 this.showMyWork = true;
-                break;
-            case 'recruiter':
-                this.showRecruiterPage = true;
                 break;
             default:
                 // Home page - no special state needed
@@ -254,18 +317,6 @@ As of Wednesday, August 6th, '25, that's where Skillboards sits. I recently lost
     closeProject() {
         this.selectedProject = null;
         this.showProjectDetail = false;
-        this.showRecruiterPage = false;
-    },
-    openPageFromProject(page) {
-        this.selectedProject = null;
-        this.showProjectDetail = false;
-        this.showMyWork = false;
-        
-        setTimeout(() => {
-            if (page === 'recruiter') {
-                this.showRecruiterPage = true;
-            }
-        }, 100);
     },
     shouldShowProject(projectKey) {
         if (this.activeFilter === 'all') return true;
@@ -280,7 +331,6 @@ As of Wednesday, August 6th, '25, that's where Skillboards sits. I recently lost
         this.showMyWork = false;
         this.showAboutPage = false;
         this.showContactPage = false;
-        this.showRecruiterPage = false;
         this.selectedProject = null;
         this.showProjectDetail = false;
     },
@@ -311,23 +361,11 @@ As of Wednesday, August 6th, '25, that's where Skillboards sits. I recently lost
     closeMyWork() {
         this.showMyWork = false;
     },
-    openRecruiterPage() {
-        this.showRecruiterPage = true;
-    },
-    closeRecruiterPage() {
-        this.showRecruiterPage = false;
-    },
     openAboutPage() {
         this.showAboutPage = true;
     },
     openContactPage() {
         this.showContactPage = true;
-    },
-    goToRecruiter() {
-        this.showRecruiterPage = true;
-    },
-    hideRecruiter() {
-        this.showRecruiterPage = false;
     },
     toggleContactInfo() {
         this.showContactInfo = !this.showContactInfo;
